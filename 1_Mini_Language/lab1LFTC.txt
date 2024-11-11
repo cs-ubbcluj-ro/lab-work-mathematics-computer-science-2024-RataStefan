@@ -1,0 +1,97 @@
+Alphabet:
+	- Upper and lower case letters of the English alphabet <letter>
+	- Underline character "_"
+	- Decimal digits (0-9) <digit>
+	- Operators <operator>
+	- Separators <separator>
+
+Constants:
+	-Integer:
+		<non-zero digit> ::= "1" | ... | "9"
+		<digit> ::= "0" | <non-zero digit>
+		<sign> ::= "+" | "-"
+  		<unsigned integer> ::= <non-zero digit> <digit> 
+  		<signed integer> ::= <sign> <unsigned integer>
+
+	- Float:
+  		<float> ::= <signed integer> "." <digit> {<digit>} | <sign> "0" "." <non-zero digit> {<digit>}
+
+	- String:
+  		<char> ::= <letter> | <digit> | <special symbol> // the <special symbol> reffers to anything that can be find in an ascii table
+		<string> ::= '"' {<char>} '"'
+
+Identifier:
+	<identifier> ::= <letter> { <letter> | <digit> | "_" }
+	<identifier_list> ::= <identifier> { "," <identifier> }
+
+
+Statements, operators, separators:
+	-Operators:
+		<arit-op> ::= "+" | "-" | "*" | "/" | "%"    // arithemtic operators
+		<rel-op> ::= "<" | "<=" | "==" | ">=" | ">" | "!="
+	-Seprators:
+		<sep> ::= "(" | ")" | "[" |  "]" | "{" | "}" | ":" | ";" | "," | "space"
+	-Statements:
+		<declaration> ::= "DECLARE" <identifier_list> | "DECLARE" <assignment>
+
+		<expression> ::= <term> { ("+" | "-") <term> }
+		<term> ::= <factor> { ("*" | "/") <factor> }
+		<factor> ::= <signet integer> | <identifier> | "(" <expression> ")"
+
+		<assignment> ::= <identifier> "=" <expression>
+		<input> ::= "IN" ">" ">" <identifier> { ">" ">" <identifier> }
+		<output> ::= "OUT" "<" "<" <expression> { "<" "<" <expression> }
+		<if> ::= "IF" <condition> "//" <statements> "\\" [ "ELSE" "//" <statements> "\\" ]
+		<while> ::= "WHILE" <condition> "//" <statements> "\\"
+
+		<statements> ::= <statement> { <statement> }
+		<statement> ::= <if_statement> | <assignment> | <expression_statement> | ...
+
+		<condition> ::= <expression>  
+
+		<expression> ::= <identifier> | <number> | <string> | <comparison>
+		<comparison> ::= <expression> ("==" | "!=" | "<" | "<=" | ">" | ">=") <expression>
+		
+		<type> ::= "int" | "float" | "string" | "bool"
+       
+
+
+
+
+
+Program Structure:
+	program ::= "//START" <statements> "\\STOP"
+
+
+(print all numbers less than k)
+
+//START
+
+DECLARE i=0, k
+
+IN>>k;
+
+WHILE i < k 
+
+	//
+	  OUT<<i<<" "
+	  i=i+1
+	\\
+
+\\STOP
+
+
+		
+
+
+
+		
+		
+
+  		
+
+
+
+
+
+
